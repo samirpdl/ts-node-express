@@ -1,3 +1,5 @@
+import camelCase from 'camelize';
+import * as snakeCase from 'js-snakecase';
 import { differenceBy, intersectionBy } from 'lodash';
 
 /**
@@ -55,4 +57,24 @@ export function difference(list1: any[], list2: any[], key = 'id') {
     update: intersectionBy(list2, list1, key),
     destroy: differenceBy(list1, list2, key).map(obj => obj[key])
   };
+}
+
+/**
+ * Make objects value into camelCase.
+ *
+ * @param {Object} obj
+ * @returns {Object}
+ */
+export function toCamelCase(obj: any) {
+  return camelCase(obj);
+}
+
+/**
+ * Make objects value into snake_case.
+ *
+ * @param {Object} obj
+ * @returns {Object}
+ */
+export function toSnakeCase(obj: any) {
+  return snakeCase.toSnakeCase(obj);
 }
